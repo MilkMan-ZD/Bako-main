@@ -1,0 +1,47 @@
+/* Цвета */
+$primary: #4B75B2;
+$accent: #CF923E;
+$text-light: #ffffff;
+$text-dark: #333333;
+
+$bg-white: #ffffff;
+$bg-transparent-dark: rgba(0, 0, 0, 0.3);
+
+/* Скругления */
+$radius-large: 28px;
+$radius-medium: 20px;
+$radius-small: 12px;
+
+/* Тени */
+$shadow-card: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+/* Размеры */
+$banner-height: 600px;
+
+/* Шрифты */
+$font-main: "Inter", sans-serif;
+
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Изменено с default (row) на column */
+  align-items: center; /* Центрируем по горизонтали */
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: #f9f9fb;
+  gap: 20px; /* Добавляем отступ между компонентами */
+}
+
+@media (max-width: 1024px) {
+  .app {
+    padding: 20px 15px;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    gap: 40px;
+  }
+}

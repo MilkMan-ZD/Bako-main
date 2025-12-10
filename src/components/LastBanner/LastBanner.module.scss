@@ -1,0 +1,178 @@
+// src/components/LastBanner/LastBanner.module.scss
+@import "../../styles/variables.scss";
+
+.lastBanner {
+    width: 100%;
+    position: relative;
+    margin: 20px 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    /* Минимальная высота как у картинки */
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1024px) {
+        margin: 80px 0;
+        min-height: 500px;
+    }
+
+    @media (max-width: 768px) {
+        margin: 60px 0;
+        min-height: 400px;
+    }
+
+    @media (max-width: 480px) {
+        min-height: 350px;
+    }
+}
+
+/* Затемнение для лучшей читаемости текста */
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media (max-width: 768px) {
+        padding: 0 15px;
+    }
+}
+
+/* Контент баннера - справа */
+.content {
+    max-width: 600px;
+    margin-left: auto;
+    /* Выравниваем по правому краю */
+    text-align: left;
+    /* Текст по правому краю */
+    padding: 60px 0;
+
+    @media (max-width: 1024px) {
+        max-width: 500px;
+        padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+        text-align: center;
+        margin-left: 0;
+        padding: 30px 0;
+    }
+}
+
+/* Большой текст - БЕЛЫЙ с переносами строк */
+.title {
+    font-size: 55px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 25px 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
+    br {
+        display: block;
+        content: " ";
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Маленький текст - БЕЛЫЙ */
+.subtitle {
+    font-size: 24px;
+    color: white;
+    line-height: 1.5;
+    margin: 0 0 35px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    br {
+        display: block;
+        content: " ";
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Оранжевая кнопка */
+.button {
+    background: $accent;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 20px 50px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    text-shadow: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    &:active {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* Hover эффект как в других кнопках */
+    &:hover {
+        background: darken($accent, 5%);
+    }
+
+    /* Для Firefox тоже убираем обводку */
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 18px 45px;
+        font-size: 19px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 16px 40px;
+        font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 14px 35px;
+        font-size: 17px;
+        width: 100%;
+        max-width: 300px;
+    }
+}

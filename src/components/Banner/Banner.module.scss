@@ -1,0 +1,383 @@
+// src/components/Banner/Banner.module.scss
+@import "../../styles/variables.scss";
+
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 1480px;
+  height: 720px;
+  margin: 30px auto 80px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 720px;
+    margin: 20px auto 60px;
+    border-radius: 28px;
+    flex-direction: column;
+  }
+
+  @media (max-width: 640px) {
+    margin: 15px auto 50px;
+    border-radius: 24px;
+  }
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 70%);
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.content {
+  margin-top: 250px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: white;
+  padding: 0 0 0 90px;
+
+  h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    white-space: normal;
+
+    br {
+      display: block;
+      content: " ";
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 48px;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 34px;
+    }
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 32px;
+    max-width: 500px;
+
+    @media (max-width: 1024px) {
+      text-align: center;
+      margin: 0 auto 32px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 60px 40px 40px;
+    text-align: center;
+    max-width: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.calc {
+  width: 257px;
+  height: 74px;
+  padding: 14px 28px;
+  background: $primary;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+
+  /* Очень минималистичный hover */
+  &:hover {
+    background: darken($primary, 5%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.view {
+  padding: 14px 28px;
+  background: $accent;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Очень минималистичный hover */
+  &:hover {
+    background: darken($accent, 5%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+/* КАРТОЧКА ПОИСКА — ПРАВАЯ СТОРОНА */
+.searchWrapper {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 380px;
+
+  @media (max-width: 1280px) {
+    right: 30px;
+    width: 350px;
+  }
+
+  @media (max-width: 1024px) {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+}
+
+/* СТИЛИ КАРТОЧКИ ПОИСКА */
+.searchCard {
+  margin-top: 240px;
+  background: white;
+  padding: 5px 28px 22px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  h3 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+}
+
+.customSelect {
+  position: relative;
+  height: 50px;
+
+  select {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 40px 0 44px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    background: white;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(63, 115, 214, 0.15);
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "▼";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #64748b;
+    pointer-events: none;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+
+  >div {
+    flex: 1;
+  }
+}
+
+/* НОВЫЕ СТИЛИ ДЛЯ СЧЕТЧИКА */
+.counterNew {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+}
+
+.counterControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0 12px;
+  background: white;
+}
+
+.counterBtn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: #f1f5f9;
+  }
+
+  &[style*="cursor: not-allowed"] {
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.counterValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Убираем старые стили счетчика */
+.counter {
+  display: none;
+}
+
+.searchBtn {
+  width: 100%;
+  margin-top: 10px;
+  height: 52px;
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: 26px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  /* Убираем черную обводку при нажатии */
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Hover эффект как в других кнопках */
+  &:hover {
+    background: darken($primary, 5%);
+  }
+
+  /* Для Firefox тоже убираем обводку */
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}

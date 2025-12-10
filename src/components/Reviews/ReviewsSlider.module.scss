@@ -1,0 +1,334 @@
+// src/components/ReviewsSlider/ReviewsSlider.module.scss
+@import "../../styles/variables.scss";
+
+.reviewsSlider {
+    width: 100%;
+    max-width: 1480px;
+    margin: 100px auto;
+    padding: 0 20px;
+
+    @media (max-width: 1024px) {
+        margin: 80px auto;
+    }
+
+    @media (max-width: 768px) {
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок слева */
+.header {
+    margin-bottom: 60px;
+    text-align: left;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+}
+
+.title {
+    font-size: 68px;
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin: 0;
+    display: inline-block;
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+    }
+}
+
+/* Слайдер - ОДИН отзыв на весь слайд */
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 15px;
+    }
+}
+
+/* Стрелки в синих кружках */
+.arrowButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: $primary;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width: 1024px) {
+        width: 50px;
+        height: 50px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 44px;
+        height: 44px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+/* Контейнер для ОДНОГО отзыва */
+.reviewContainer {
+    flex: 1;
+    min-height: 600px;
+    /* Увеличил для большой картинки */
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1024px) {
+        min-height: 500px;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 400px;
+    }
+}
+
+/* Контент отзыва - картинка слева, текст справа */
+.reviewContent {
+    display: flex;
+    gap: 100px;
+    /* Увеличил расстояние между картинкой и текстом */
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 70px;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+}
+
+/* Картинка слева - БОЛЬШАЯ */
+.reviewImage {
+    flex-shrink: 0;
+    width: 600px;
+    /* Увеличил в 3 раза с 350px до 600px */
+    height: 600px;
+    /* Увеличил в 3 раза с 350px до 600px */
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+
+    @media (max-width: 1024px) {
+        width: 500px;
+        /* Увеличил пропорционально */
+        height: 500px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    @media (max-width: 480px) {
+        height: 300px;
+        max-width: 300px;
+    }
+}
+
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+}
+
+/* Текст справа */
+.reviewTextContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    /* Увеличил для баланса с большой картинкой */
+    justify-content: center;
+
+    @media (max-width: 768px) {
+        min-height: auto;
+        align-items: center;
+    }
+}
+
+/* Цитата */
+.reviewQuote {
+    margin-bottom: 40px;
+
+    @media (max-width: 1024px) {
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 25px;
+    }
+}
+
+.quoteText {
+    font-size: 28px;
+    /* Увеличил размер текста */
+    line-height: 1.6;
+    /* Увеличил межстрочный интервал */
+    color: black;
+    margin: 0;
+    font-weight: 400;
+    font-style: italic;
+
+    @media (max-width: 1024px) {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 20px;
+    }
+}
+
+/* Автор отзыва */
+.reviewAuthor {
+    padding-top: 20px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.authorName {
+    font-size: 48px;
+    /* Увеличил */
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+
+    @media (max-width: 1024px) {
+        font-size: 26px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 22px;
+    }
+}
+
+/* Увеличил размер позиции */
+.authorPosition {
+    font-size: 30px;
+    /* Увеличил */
+    color: #333;
+    margin: 0;
+    font-weight: 400;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 17px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+    }
+}
+
+/* Пагинация (точки) */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+
+    @media (max-width: 768px) {
+        margin-top: 30px;
+    }
+}
+
+.pageDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &.active {
+        background: $primary;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

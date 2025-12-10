@@ -1,0 +1,248 @@
+// src/components/YouTubeSlider/YouTubeSlider.module.scss
+@import "../../styles/variables.scss";
+
+.youtubeSlider {
+    width: 100%;
+    max-width: 1480px;
+    padding: 0 20px;
+
+    @media (max-width: 1024px) {
+        margin: 80px auto;
+    }
+
+    @media (max-width: 768px) {
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Центрируем весь контейнер */
+}
+
+/* Заголовок по центру */
+.header {
+    margin-bottom: 60px;
+    text-align: center;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+    }
+}
+
+.title {
+    font-size: 68px;
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    /* Центрируем с помощью margin auto */
+    text-align: center;
+    display: block;
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+    }
+}
+
+/* Слайдер */
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 15px;
+    }
+}
+
+/* Стрелки в синих кружках */
+.arrowButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: $primary;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+
+    /* НЕТ hover эффектов */
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Убрать outline при фокусе */
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width: 1024px) {
+        width: 50px;
+        height: 50px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 44px;
+        height: 44px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+/* Контейнер для карточек */
+.cardsContainer {
+    flex: 1;
+    overflow: hidden;
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Карточка (просто картинка) */
+.card {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Эффект наведения для видео */
+
+    /* Эффект "play button" при наведении */
+    &:hover::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+    }
+
+    /* Эффект кнопки play при наведении */
+    &:hover::before {
+        content: '▶';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: $primary;
+        z-index: 2;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        &:hover {
+            transform: none;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            display: none;
+        }
+    }
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+}
+
+/* Пагинация (точки) */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+
+    @media (max-width: 768px) {
+        margin-top: 30px;
+    }
+}
+
+.pageDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    /* НЕТ hover эффектов */
+
+    &.active {
+        background: $primary;
+    }
+
+    /* Убрать outline */
+    &:focus {
+        outline: none;
+    }
+}

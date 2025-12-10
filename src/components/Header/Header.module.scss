@@ -1,0 +1,283 @@
+// src/components/Header/Header.module.scss
+@import "../../styles/variables.scss";
+
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 5px 0;
+    /* Минимальные отступы */
+    background: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 20px;
+        padding: 0 15px;
+    }
+}
+
+/* Логотип - ЕЩЁ БОЛЬШЕ */
+.logo {
+    flex-shrink: 0;
+}
+
+.logoImage {
+    height: 80px;
+    /* Увеличил еще больше */
+    width: auto;
+    object-fit: contain;
+
+    @media (max-width: 768px) {
+        height: 55px;
+        /* На мобильных тоже больше */
+    }
+}
+
+/* Навигация для десктопа */
+.desktopNav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 1200px) {
+        gap: 30px;
+    }
+}
+
+.navItem {
+    margin: 0;
+}
+
+.navLink {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 500;
+    color: #333333;
+    transition: color 0.2s ease;
+    padding: 5px 0;
+    /* Уменьшил padding */
+    position: relative;
+    white-space: nowrap;
+
+    &:hover {
+        color: $primary;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary;
+        transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+/* Синяя кнопка консультации - с таким же hover */
+.consultationBtn {
+    flex-shrink: 0;
+    height: 60px;
+    width: 300px;
+    background: $primary;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    /* Немного уменьшил padding */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+
+    /* Такой же hover как в других кнопках */
+    &:hover {
+        background: darken($primary, 5%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
+
+/* Кнопка меню для мобильных */
+.menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+
+    @media (max-width: 1024px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.menuIcon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a1a;
+    position: relative;
+    transition: background 0.2s;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background: #1a1a1a;
+        left: 0;
+        transition: transform 0.3s ease;
+    }
+
+    &::before {
+        top: -8px;
+    }
+
+    &::after {
+        bottom: -8px;
+    }
+}
+
+/* Мобильное меню */
+.mobileMenu {
+    position: fixed;
+    top: 65px;
+    /* Уменьшил top */
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    /* Уменьшил padding */
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+
+    &.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @media (min-width: 1025px) {
+        display: none;
+    }
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Уменьшил gap */
+}
+
+.mobileNavList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Уменьшил gap */
+}
+
+.mobileNavItem {
+    margin: 0;
+}
+
+.mobileNavLink {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1a1a;
+    padding: 8px 0;
+    /* Уменьшил padding */
+    display: block;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:hover {
+        color: $primary;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.mobileConsultationBtn {
+    width: 100%;
+    background: $primary;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    /* Уменьшил padding */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+
+    /* Такой же hover */
+    &:hover {
+        background: darken($primary, 5%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

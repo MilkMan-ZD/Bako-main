@@ -1,0 +1,244 @@
+// src/components/Advantages/Advantages.module.scss
+@import "../../styles/variables.scss";
+
+.advantages {
+    width: 100%;
+    max-width: 1480px;
+    margin: 100px auto;
+    padding: 0 20px;
+
+    @media (max-width: 1024px) {
+        margin: 80px auto;
+    }
+
+    @media (max-width: 768px) {
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+}
+
+.container {
+    width: 100%;
+}
+
+/* Заголовок */
+.header {
+    margin-bottom: 80px;
+    text-align: left;
+
+    @media (max-width: 768px) {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+}
+
+.title {
+    font-size: 68px;
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin: 0;
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+    }
+}
+
+/* Контент с двумя колонками */
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    /* Уменьшил расстояние между колонками с 80px до 30px */
+
+    @media (max-width: 1024px) {
+        gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 0;
+        /* На мобилках нет двух колонок, так что gap не нужен */
+    }
+}
+
+/* Колонка */
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    /* Увеличил расстояние между карточками в колонке с 60px до 90px */
+
+    @media (max-width: 1024px) {
+        gap: 80px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 60px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 50px;
+    }
+}
+
+/* Карточка преимущества - ИЗМЕНЕНО */
+.card {
+    display: flex;
+    flex-direction: column;
+    /* Меняем на колонку */
+    padding: 40px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+    border: 1px solid #f1f5f9;
+    min-height: 200px;
+    /* Увеличил высоту для вертикального расположения */
+    align-items: flex-start;
+    /* Выравнивание по левому краю */
+
+    @media (max-width: 1024px) {
+        padding: 35px;
+        min-height: 250px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 30px;
+        min-height: 220px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 25px;
+        min-height: 200px;
+    }
+}
+
+/* Верхняя часть карточки с иконкой и большим текстом */
+.cardTop {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    /* Отступ между верхней частью и маленьким текстом */
+    width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 35px;
+        margin-bottom: 25px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 25px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Иконка */
+.cardIcon {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Запрет на перетаскивание иконок */
+    img {
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    @media (max-width: 1024px) {
+        width: 80px;
+        height: 80px;
+    }
+
+    @media (max-width: 768px) {
+        width: 70px;
+        height: 70px;
+    }
+
+    @media (max-width: 480px) {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Большой текст рядом с иконкой */
+.bigTextContainer {
+    flex: 1;
+}
+
+.cardTitle {
+    font-size: 48px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.1;
+    /* Более компактный межстрочный интервал */
+    text-align: left;
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+    }
+}
+
+/* Маленький текст отдельно внизу */
+.cardDescription {
+    font-size: 25px;
+    color: #333333;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    /* Занимает всю ширину */
+    padding-top: 10px;
+    /* Серая линия как разделитель */
+
+    @media (max-width: 1024px) {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        padding-top: 8px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 14px;
+        padding-top: 6px;
+    }
+}

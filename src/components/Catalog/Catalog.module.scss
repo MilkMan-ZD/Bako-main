@@ -1,0 +1,493 @@
+// src/components/Catalog/Catalog.module.scss
+@import "../../styles/variables.scss";
+
+.catalog {
+    width: 100%;
+    max-width: 1480px;
+    margin: 100px auto;
+    padding: 0 20px;
+
+    @media (max-width: 1024px) {
+        margin: 80px auto;
+    }
+
+    @media (max-width: 768px) {
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+}
+
+.container {
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 60px;
+    text-align: left;
+    /* Изменено с center на left */
+    padding-left: 0;
+    /* Убедимся что нет отступа слева */
+
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+        text-align: left;
+        /* На мобилках тоже слева */
+    }
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: left;
+    /* Добавим на всякий случай */
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+        text-align: left;
+        /* И на мобилках */
+    }
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+    }
+}
+
+/* Сетка карточек */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+
+    @media (max-width: 1200px) {
+        gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        border-color: #cbd5e1;
+    }
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.imageContainer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #f1f5f9;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Контент карточки (текстовая часть) */
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Верхняя секция: Название, Площадь, Цена */
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Блок с названием и площадью */
+.titleAreaBlock {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.cardTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: black;
+    margin: 0;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
+}
+
+/* Площадь в прямоугольнике */
+.areaBadge {
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+/* Блок с ценой */
+.priceBlock {
+    text-align: right;
+}
+
+.cardPrice {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+    line-height: 1;
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+    }
+}
+
+/* Нижняя секция: Два прямоугольника с характеристиками */
+.featuresSection {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Прямоугольник для каждой характеристики */
+.featureRectangle {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 6px 10px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: auto;
+    min-width: 80px;
+    max-width: 100px;
+
+    &:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+    }
+}
+
+/* Содержимое прямоугольника - всё в одной строке */
+.featureContent {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* Иконка */
+.featureIcon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* CSS иконки */
+.featureIconFallback {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    flex-shrink: 0;
+
+    /* Иконка кровати */
+    &.bedroom {
+        &::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 9px;
+            border: 1.5px solid #475569;
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 1.5px;
+            background: #475569;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Иконка ванны */
+    &.bath {
+        &::before {
+            content: "";
+            position: absolute;
+            width: 11px;
+            height: 8px;
+            border: 1.5px solid #475569;
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #475569;
+            border-radius: 50%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+/* Блок с текстом (цифра и текст в одной строке) */
+.featureTextBlock {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+}
+
+.featureNumber {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1;
+}
+
+.featureText {
+    font-size: 12px;
+    color: #475569;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Кнопка "Показать еще" - закомментирована
+.footer {
+    margin-top: 60px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        margin-top: 40px;
+    }
+}
+
+.showMoreBtn {
+    padding: 16px 40px;
+    background: $primary;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background: darken($primary, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(63, 115, 214, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        padding: 14px 32px;
+        font-size: 15px;
+    }
+}
+*/
+
+/* Слайдер */
+.sliderContainer {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Стили для слайдов */
+.slideActive {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    transition: opacity 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
+    will-change: opacity, transform;
+    /* Оптимизация для браузера */
+}
+
+.slideHidden {
+    opacity: 0;
+    transform: translateX(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
+    will-change: opacity, transform;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 60px;
+
+    @media (max-width: 768px) {
+        margin-top: 40px;
+        gap: 20px;
+    }
+}
+
+/* Стрелки - ЧЕРНЫЕ БЕЗ ЭФФЕКТОВ */
+.arrowButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Убрать outline */
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    /* Альтернативный фокус для доступности */
+    &:focus-visible {
+        outline: 2px solid $primary;
+        outline-offset: 2px;
+    }
+
+    &.disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        color: #cccccc;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+    }
+}
+
+/* Номера страниц - ЦЕНТРИРОВАННЫЕ ЦИФРЫ */
+.pageNumbers {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.pageButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: #666666;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+
+    /* Убрать outline при фокусе */
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* Убрать outline в Firefox */
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    /* Для доступности можно добавить альтернативный фокус */
+    &:focus-visible {
+        outline: 2px solid $primary;
+        outline-offset: 2px;
+    }
+
+    &.active {
+        background: $primary;
+        color: white;
+
+        /* Убрать outline у активной кнопки */
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+}
